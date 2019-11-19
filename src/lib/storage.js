@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Sækir og vistar í localStorage
  */
@@ -15,7 +16,8 @@ const LOCALSTORAGE_KEY = 'favourite_spacephotos';
  * @returns {array} fylki af myndum eða tóma fylkið ef ekkert vistað.
  */
 export function load() {
-
+  const ls = localStorage.getItem(LOCALSTORAGE_KEY);
+  return JSON.parse(ls);
 }
 
 /**
@@ -27,7 +29,17 @@ export function load() {
  * @param {string} title titill fyrir myndina/myndbandið.
  */
 export function save(type, mediaUrl, text, title) {
-
+  let fav = load();
+  console.log('storage');
+  if (fav === 0 || fav === undefined || fav === null) {
+    fav = [];
+    fav.push(type, mediaUrl, text, title);
+  } else {
+    fav.push(type, mediaUrl, text, title);
+  }
+  const favAsString = JSON.stringify(fav);
+  console.log(JSON.stringify(fav));
+  localStorage.setItem(LOCALSTORAGE_KEY, favAsString);
 }
 
 

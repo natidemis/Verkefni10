@@ -1,10 +1,10 @@
+/* eslint-disable no-console */
 import init, { loadFavourites } from './lib/display-media';
 
-document.addEventListener('DOMContentLoaded', () => {
 
+document.addEventListener('DOMContentLoaded', () => {
   const page = document.querySelector('body');
   const isFavourites = page.classList.contains('favourites-page');
-
   if (isFavourites) {
     loadFavourites();
   } else {
