@@ -30,7 +30,6 @@ export function load() {
  */
 export function save(type, mediaUrl, text, title) {
   let fav = load();
-  console.log('storage');
   if (fav === 0 || fav === undefined || fav === null) {
     fav = [];
     fav.push(type, mediaUrl, text, title);
@@ -38,7 +37,6 @@ export function save(type, mediaUrl, text, title) {
     fav.push(type, mediaUrl, text, title);
   }
   const favAsString = JSON.stringify(fav);
-  console.log(JSON.stringify(fav));
   localStorage.setItem(LOCALSTORAGE_KEY, favAsString);
 }
 

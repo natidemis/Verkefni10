@@ -22,7 +22,8 @@ async function getNewImage() {
   } else {
     const iframe = document.createElement('iframe');
     iframe.src = image.url;
-    img.replaceWith(document.createElement('iframe'));
+    iframe.frameBorder = 0;
+    img.replaceWith(iframe);
   }
   title.innerHTML = image.title;
   text.innerHTML = image.explanation;
@@ -74,13 +75,12 @@ export function loadFavourites() {
       } else {
         const iframe = document.createElement('iframe');
         const h2 = document.createElement('h2');
-        iframe.classList.add('apod__image');
         h2.classList.add('apod__title');
-        iframe.classList.add('apod__image');
+        iframe.frameBorder = 0;
         h2.innerHTML = favourites[k + 3];
         main[0].appendChild(h2);
         iframe.src = favourites[k + 1];
-        main[0].appendChild(img);
+        main[0].appendChild(iframe);
       }
     }
   }
